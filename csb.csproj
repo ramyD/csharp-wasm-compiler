@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">	
+	<PropertyGroup>
+		<Configuration>Release</Configuration>
+		<WasmCopyAppZipToHelixTestDir Condition="'$(ArchiveTests)' == 'true'">true</WasmCopyAppZipToHelixTestDir>
+		<WasmMainJSPath>script.js</WasmMainJSPath>
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>embedded</DebugType>
+		<WasmDebugLevel>0</WasmDebugLevel>
+		<PublishTrimmed>false</PublishTrimmed>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<WasmExtraFilesToDeploy Include="index.html" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="Microsoft.CodeAnalysis">
+			<HintPath>$(WasmAppHostDir)Microsoft.CodeAnalysis.dll</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.CodeAnalysis.CSharp">
+			<HintPath>$(WasmAppHostDir)Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.CodeAnalysis.CSharp.Scripting">
+			<HintPath>$(WasmAppHostDir)Microsoft.CodeAnalysis.CSharp.Scripting.dll</HintPath>
+		</Reference>
+		<Reference Include="Microsoft.CodeAnalysis.Scripting">
+			<HintPath>$(WasmAppHostDir)Microsoft.CodeAnalysis.Scripting.dll</HintPath>
+		</Reference>
+		<Reference Include="Newtonsoft.Json">
+			<HintPath>$(WasmAppHostDir)Newtonsoft.Json.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+	<PropertyGroup>
+		<_SampleProject>csb.csproj</_SampleProject>
+	</PropertyGroup>
+
+	<Target Name="CSBPublish" AfterTargets="_BeforeWasmBuildApp">
+		<ItemGroup>
+			<_WasmAssembliesInternal Include="$(WasmAppHostDir)Microsoft.CodeAnalysis.dll" />
+			<_WasmAssembliesInternal Include="$(WasmAppHostDir)Microsoft.CodeAnalysis.CSharp.dll" />
+			<_WasmAssembliesInternal Include="$(WasmAppHostDir)Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+			<_WasmAssembliesInternal Include="$(WasmAppHostDir)Microsoft.CodeAnalysis.Scripting.dll" />
+			<_WasmAssembliesInternal Include="$(WasmAppHostDir)Newtonsoft.Json.dll" />
+		</ItemGroup>
+	</Target>
+
+	<Target Name="RunSample" DependsOnTargets="RunSampleWithBrowser" />
+</Project>

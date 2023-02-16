@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Simple Code Test</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+		<link rel="modulepreload" href="./dotnet.js" />
+	</head>
+
+	<body>
+		<h1>Tests</h1>
+		<p>This is an automatically filled field: <span id="fromauto"></span></p>
+		<div>
+			<span><button type="button" id="execute">Execute Remote Function</button></span><span id="frombutton">This text will be replaced</span>
+		</div>
+		<br/>
+		<div>
+			<label for="code">Enter code bellow:</label><br/>
+			<textarea id="code" name="code" rows="15" cols="75">
+using System;
+					
+namespace WasmRoslynDynamic
+{
+	public class Program
+	{
+		public static void Main()
+		{
+			Console.WriteLine("Hello World");
+		}
+	}
+}
+			</textarea>
+			<button type="button" id="compileandrun">Compile and run code</button><br/>
+			<div id="fromcompileoutput_compiler"style="width:35em; height:5em; overflow:scroll;">Compiler log</div>
+			<textarea id="fromcompileoutput_results" rows="5" cols="75" readonly>Results output</textarea>
+			<div id="fromcompileoutput_runtime"style="width:35em; height:5em; overflow:scroll;">Runtime log</div>
+			<textarea id="fromcompileoutput_errors" rows="5" cols="75" readonly>Error output</textarea>
+		</div>
+	</body>
+	
+	<script type='module' src="./script.js"></script>
+</html>
