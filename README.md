@@ -28,18 +28,23 @@ Build dotnet 7 from source along with its wasm target
 	export PATH=$PATH:`pwd`.dotnet:`pwd`.dotnet/tools
 
 If you will want to use the dotnet webserver, now is a good time to install it
+
 	./dotnet.sh tool install --global dotnet-serve
 	export PATH="$PATH:$HOME/.dotnet/tools"
 
 ## CSharp WASM Compiler
 You can clone this project in the sample folder of the dotnet runtime repo here
+
 	cd src/mono/sample/wasm
 
 clone the project and make
+
 	git clone --depth 1 https://github.com/ramyD/csharp-wasm-compiler.git
 	cd csharp-wasm
 	make
 
 from here you can simply start a simple http server in the *bin/Release/Appbundle/* directory or run
+
 	make run
+	
 to use the dotnet webserver tool
