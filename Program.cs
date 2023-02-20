@@ -39,7 +39,7 @@ namespace WasmRoslyn
         [JSExport]
         internal static void SayHello()
         {
-            SayHelloCallback("Hello Ramy");
+            SayHelloCallback("Hello World");
         }
 
         [JSExport]
